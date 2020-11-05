@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--上面的头文件也是需要添加的，不添加的话，也会报错-->
+
+<mapper namespace="com.kunkun.springboot.mapper.DMMapper">
+
+
+    <!--这边其实是一个跟model中DM的一个对应，如果不添加的话，就会一直读出空-->
+    <resultMap id="BaseResultMap" type="com.kunkun.springboot.model.DM">
+        <result column="id" property="id" jdbcType="BIGINT" />
+        <result column="survey_rule_id" property="surveyRuleId" jdbcType="BIGINT" />
+        <result column="driver_no" property="driverNo" jdbcType="BIGINT" />
+        <result column="del_flag" property="delFlag" jdbcType="TINYINT" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id = "table">
+        dm_survey_driver_relation
+    </sql>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        select *
+        from dm_survey_driver_relation
+        where  id = #{id,jdbcType=BIGINT}
+    </select>
+
+</mapper>
